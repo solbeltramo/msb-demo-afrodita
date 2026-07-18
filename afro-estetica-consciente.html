@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Afro — Estética Consciente</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+
+  /* ============================================================
+     PANEL DE PERSONALIZACIÓN
+     Para reusar esta plantilla con un cliente nuevo, solo tenés
+     que tocar estas variables. Todo el resto del CSS las usa.
+     ============================================================ */
+  :root{
+    /* --- Paleta (tomada del verde de marca de Afro) --- */
+    --paper:     #F3F1E8;   /* fondo principal, verde muy pálido/hueso */
+    --ink:       #1A2620;   /* texto principal, verde muy oscuro casi negro */
+    --ink-soft:  #556155;   /* texto secundario */
+    --accent:    #8A9A78;   /* acento sage/oliva claro — detalles */
+    --accent-2:  #1F4A3D;   /* verde pino profundo — el color del logo */
+    --line:      #DBDECF;   /* líneas divisorias sutiles */
+    --card-bg:   #FFFFFF;
+
+    /* --- Tipografía --- */
+    --font-display: "Fraunces", serif;
+    --font-body: "Work Sans", sans-serif;
+    --font-mono: "Jost", sans-serif;
+  }
+
+  *{ margin:0; padding:0; box-sizing:border-box; }
+
+  html{ scroll-behavior:smooth; }
+
+  body{
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-body);
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  img{ max-width:100%; display:block; }
+
+  a{ color:inherit; text-decoration:none; }
+
+  .wrap{
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  .eyebrow{
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent-2);
+  }
+
+  h1,h2,h3{
+    font-family: var(--font-display);
+    font-weight:600;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding: 14px 26px;
+    border-radius: 999px;
+    font-family: var(--font-body);
+    font-weight:600;
+    font-size: 15px;
+    cursor:pointer;
+    border: 1px solid transparent;
+    transition: transform .15s ease, box-shadow .15s ease;
+  }
+  .btn:hover{ transform: translateY(-2px); }
+  .btn-primary{
+    background: var(--ink);
+    color: var(--paper);
+  }
+  .btn-primary:hover{ box-shadow: 0 8px 20px rgba(28,27,23,0.25); }
+  .btn-ghost{
+    border-color: var(--ink);
+    color: var(--ink);
+    background: transparent;
+  }
+
+  /* ---------- HEADER ---------- */
+  header{
+    position: sticky;
+    top:0;
+    z-index: 50;
+    background: rgba(246,243,236,0.88);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav{
+    display:flex;
+    align-items:center;
+    justify-content: space-between;
+    padding: 18px 0;
+  }
+  .logo{
+    font-family: var(--font-display);
+    font-size: 21px;
+    font-weight: 700;
+  }
+  .nav-links{
+    display:flex;
+    gap: 32px;
+    font-size: 14px;
+    font-weight: 500;
+  }
+  .nav-links a{ opacity:0.75; transition: opacity .15s; }
+  .nav-links a:hover{ opacity:1; }
+  .nav-cta{ display:flex; }
+  .burger{ display:none; }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    padding: 108px 0 96px;
+    overflow:hidden;
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 56px;
+    align-items:center;
+  }
+  .hero h1{
+    font-size: clamp(38px, 5vw, 62px);
+    line-height: 1.04;
+    margin: 18px 0 22px;
+  }
+  .hero h1 em{
+    font-style: italic;
+    color: var(--accent);
+  }
+  .hero p.lead{
+    font-size: 18px;
+    color: var(--ink-soft);
+    max-width: 46ch;
+    margin-bottom: 34px;
+  }
+  .hero-actions{ display:flex; gap:14px; flex-wrap:wrap; }
+
+  .hero-visual{
+    position:relative;
+    aspect-ratio: 4/5;
+    border-radius: 18px;
+    background:
+      linear-gradient(155deg, var(--accent-2) 0%, transparent 55%),
+      var(--ink);
+    display:flex;
+    align-items:flex-end;
+    padding: 22px;
+    color: var(--paper);
+    /* Reemplazar por: background-image: url('foto-del-negocio.jpg'); background-size:cover; background-position:center; */
+  }
+  .hero-visual .tag{
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    opacity: 0.85;
+  }
+  .hero-visual::before{
+    content: "EDITAR: foto real del negocio acá";
+    position:absolute; inset:0;
+    display:flex; align-items:center; justify-content:center;
+    text-align:center;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: rgba(246,243,236,0.55);
+    padding: 20px;
+  }
+
+  .hero .signature-cut{
+    position:absolute;
+    left:0; right:0; bottom:0;
+    height: 120px;
+    background: var(--paper);
+    clip-path: polygon(0 100%, 100% 40%, 100% 100%, 0% 100%);
+  }
+
+  /* ---------- MARQUEE / CLIENTES-CONFIANZA (opcional) ---------- */
+  .strip{
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    padding: 22px 0;
+  }
+  .strip .wrap{
+    display:flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 18px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+
+  /* ---------- SERVICIOS ---------- */
+  .section{ padding: 96px 0; }
+  .section-head{
+    max-width: 620px;
+    margin-bottom: 52px;
+  }
+  .section-head h2{
+    font-size: clamp(28px, 3.4vw, 40px);
+    margin-top: 12px;
+  }
+
+  .services-grid{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+  }
+  .card{
+    background: var(--card-bg);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 30px 26px;
+    transition: transform .18s ease, box-shadow .18s ease;
+  }
+  .card:hover{
+    transform: translateY(-4px);
+    box-shadow: 0 14px 30px rgba(28,27,23,0.08);
+  }
+  .card .num{
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--accent);
+    margin-bottom: 14px;
+    display:block;
+  }
+  .card h3{ font-size: 20px; margin-bottom: 10px; }
+  .card p{ color: var(--ink-soft); font-size: 15px; }
+
+  /* ---------- POR QUÉ ELEGIRNOS / STATS ---------- */
+  .stats-band{
+    background: var(--ink);
+    color: var(--paper);
+    padding: 72px 0;
+  }
+  .stats-band .wrap{
+    display:grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 32px;
+  }
+  .stat b{
+    font-family: var(--font-display);
+    font-size: 44px;
+    font-weight: 600;
+    display:block;
+    color: var(--accent);
+  }
+  .stat span{
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    opacity: 0.75;
+  }
+
+  /* ---------- TESTIMONIOS ---------- */
+  .testi-grid{
+    display:grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 22px;
+  }
+  .testi{
+    background: var(--card-bg);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 30px;
+  }
+  .testi p{ font-size: 17px; margin-bottom: 18px; font-family: var(--font-display); font-style: italic; }
+  .testi .who{ display:flex; align-items:center; gap: 12px; }
+  .testi .avatar{
+    width: 40px; height:40px; border-radius:50%;
+    background: var(--accent-2);
+  }
+  .testi .who b{ font-size: 14px; display:block; }
+  .testi .who small{ color: var(--ink-soft); font-size: 13px; }
+
+  /* ---------- CTA FINAL ---------- */
+  .cta-final{
+    background: var(--accent-2);
+    color: var(--paper);
+    border-radius: 22px;
+    padding: 64px 48px;
+    margin: 0 auto;
+    max-width: 1140px;
+    text-align:center;
+  }
+  .cta-final h2{ color: var(--paper); font-size: clamp(28px,4vw,42px); margin-bottom: 16px; }
+  .cta-final p{ opacity:0.85; margin-bottom: 30px; max-width: 46ch; margin-inline:auto; }
+  .cta-final .btn-primary{ background: var(--paper); color: var(--ink); }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    padding: 56px 0 32px;
+    border-top: 1px solid var(--line);
+    margin-top: 96px;
+  }
+  .footer-grid{
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap: 24px;
+    margin-bottom: 36px;
+  }
+  .footer-links{ display:flex; gap:24px; font-size:14px; }
+  .footer-bottom{
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--ink-soft);
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:8px;
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 860px){
+    .hero-grid{ grid-template-columns: 1fr; }
+    .hero-visual{ aspect-ratio: 16/10; }
+    .services-grid{ grid-template-columns: 1fr; }
+    .stats-band .wrap{ grid-template-columns: 1fr; gap: 26px; }
+    .testi-grid{ grid-template-columns: 1fr; }
+    .nav-links{ display:none; }
+    .cta-final{ padding: 44px 24px; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+    .card, .btn{ transition:none; }
+  }
+
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     HEADER
+     EDITAR: nombre del negocio, links del menú
+     ============================================================ -->
+<header>
+  <div class="wrap nav">
+    <div class="logo">Afro</div>
+    <nav class="nav-links">
+      <a href="#servicios">Servicios</a>
+      <a href="#nosotros">Por qué elegirnos</a>
+      <a href="#testimonios">Testimonios</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn btn-primary" href="https://wa.me/5493564690017" target="_blank">Reservar turno</a>
+    </div>
+  </div>
+</header>
+
+<!-- ============================================================
+     HERO
+     EDITAR: título, bajada, foto de fondo (ver .hero-visual en CSS)
+     ============================================================ -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">Afro · Estética Consciente · San Francisco, Córdoba</span>
+      <h1>Belleza que se cuida <em>de adentro hacia afuera</em></h1>
+      <p class="lead">Combinamos tecnología, salud y tratamientos personalizados en un espacio pensado para que te sientas cómoda, acompañada y segura en cada proceso.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#contacto">Reservar turno</a>
+        <a class="btn btn-ghost" href="#servicios">Ver tratamientos</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <span class="tag">EDITAR: foto real del gabinete o de un tratamiento</span>
+    </div>
+  </div>
+  <div class="signature-cut"></div>
+</section>
+
+<div class="strip">
+  <div class="wrap">
+    <span>Medicina estética integral</span>
+    <span>Tratamientos personalizados</span>
+    <span>Garibaldi 101, San Francisco</span>
+    <span>+13 mil seguidores en Instagram</span>
+  </div>
+</div>
+
+<!-- ============================================================
+     SERVICIOS
+     EDITAR: título, y cada card (num / título / descripción)
+     ============================================================ -->
+<section class="section" id="servicios">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Qué ofrecemos</span>
+      <h2>Tratamientos pensados para vos</h2>
+    </div>
+    <div class="services-grid">
+      <div class="card">
+        <span class="num">01</span>
+        <h3>Faciales</h3>
+        <p>Limpieza profunda, dermapen, dermaplaning, radiofrecuencia, HIFU, punta de diamante y más, según lo que tu piel necesite.</p>
+      </div>
+      <div class="card">
+        <span class="num">02</span>
+        <h3>Corporales</h3>
+        <p>Lipoláser, criolipólisis, presoterapia, radiofrecuencia y masajes manuales reductores y anticelulíticos.</p>
+      </div>
+      <div class="card">
+        <span class="num">03</span>
+        <h3>Depilación</h3>
+        <p>Depilación definitiva con tecnología adaptada a cada tipo de piel, con seguimiento personalizado.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     POR QUÉ ELEGIRNOS / NÚMEROS
+     EDITAR: las cifras según el negocio real (o borrar la sección)
+     ============================================================ -->
+<section class="stats-band" id="nosotros">
+  <div class="wrap">
+    <div class="stat">
+      <b>13,3 mil</b>
+      <span>Seguidores en Instagram</span>
+    </div>
+    <div class="stat">
+      <b>+20</b>
+      <span>Tratamientos faciales y corporales</span>
+    </div>
+    <div class="stat">
+      <b>100%</b>
+      <span>Atención personalizada</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     TESTIMONIOS
+     EDITAR: reemplazar por reseñas reales del negocio (con permiso)
+     ============================================================ -->
+<section class="section" id="testimonios">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Lo que dicen</span>
+      <h2>Clientes que ya confiaron</h2>
+    </div>
+    <div class="testi-grid">
+      <div class="testi">
+        <p>"EDITAR: acá va una reseña real de una clienta de Afro (con su permiso)."</p>
+        <div class="who">
+          <div class="avatar"></div>
+          <div>
+            <b>Nombre Apellido</b>
+            <small>Clienta</small>
+          </div>
+        </div>
+      </div>
+      <div class="testi">
+        <p>"EDITAR: segunda reseña real, mostrando otro tratamiento o aspecto de la experiencia."</p>
+        <div class="who">
+          <div class="avatar"></div>
+          <div>
+            <b>Nombre Apellido</b>
+            <small>Clienta</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CTA FINAL / CONTACTO
+     EDITAR: número de WhatsApp, texto
+     ============================================================ -->
+<section class="section" id="contacto">
+  <div class="wrap">
+    <div class="cta-final">
+      <span class="eyebrow" style="color:var(--paper); opacity:.7;">Contacto</span>
+      <h2>¿Reservamos tu turno?</h2>
+      <p>Escribinos por WhatsApp y te respondemos en el día. Estamos para cuidarte.</p>
+      <a class="btn btn-primary" href="https://wa.me/5493564690017" target="_blank">Escribir por WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER
+     EDITAR: redes sociales, dirección, nombre del negocio
+     ============================================================ -->
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="logo">Afro</div>
+      <div class="footer-links">
+        <a href="https://instagram.com/bellezaafrodita" target="_blank">Instagram</a>
+        <a href="https://wa.me/5493564690017" target="_blank">WhatsApp</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>Garibaldi 101, San Francisco, Córdoba</span>
+      <span>Sitio realizado por MSB Studio Digital</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
