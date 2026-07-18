@@ -254,8 +254,20 @@
   }
   .stats-band .wrap{
     display:grid;
-    grid-template-columns: repeat(3,1fr);
+    grid-template-columns: repeat(4,1fr);
     gap: 32px;
+  }
+  .stat h3{
+    font-family: var(--font-display);
+    font-size: 21px;
+    font-weight: 600;
+    color: var(--accent);
+    margin-bottom: 10px;
+  }
+  .stat p{
+    font-size: 14px;
+    line-height: 1.55;
+    opacity: 0.82;
   }
   .stat b{
     font-family: var(--font-display);
@@ -336,7 +348,7 @@
     .hero-grid{ grid-template-columns: 1fr; }
     .hero-visual{ aspect-ratio: 16/10; }
     .services-grid{ grid-template-columns: 1fr; }
-    .stats-band .wrap{ grid-template-columns: 1fr; gap: 26px; }
+    .stats-band .wrap{ grid-template-columns: 1fr 1fr; gap: 26px; }
     .testi-grid{ grid-template-columns: 1fr; }
     .nav-links{ display:none; }
     .cta-final{ padding: 44px 24px; }
@@ -436,18 +448,25 @@
      EDITAR: las cifras según el negocio real (o borrar la sección)
      ============================================================ -->
 <section class="stats-band" id="nosotros">
+  <div class="wrap" style="margin-bottom:44px;">
+    <span class="eyebrow" style="color:var(--accent);">Por qué elegirnos</span>
+  </div>
   <div class="wrap">
     <div class="stat">
-      <b>13,3 mil</b>
-      <span>Seguidores en Instagram</span>
+      <h3>Bienestar integral</h3>
+      <p>Cuidamos tu piel y tu cuerpo desde una mirada de salud, no solo de estética.</p>
     </div>
     <div class="stat">
-      <b>+20</b>
-      <span>Tratamientos faciales y corporales</span>
+      <h3>Tratamientos personalizados</h3>
+      <p>Cada plan se arma según lo que tu piel y tu cuerpo realmente necesitan.</p>
     </div>
     <div class="stat">
-      <b>100%</b>
-      <span>Atención personalizada</span>
+      <h3>Belleza consciente</h3>
+      <p>Procesos pensados para acompañarte, sin apuros ni promesas vacías.</p>
+    </div>
+    <div class="stat">
+      <h3>Productos seguros</h3>
+      <p>Tecnología y productos certificados, con seguimiento profesional en cada sesión.</p>
     </div>
   </div>
 </section>
