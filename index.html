@@ -15,7 +15,7 @@
      que tocar estas variables. Todo el resto del CSS las usa.
      ============================================================ */
   :root{
-    /* --- Paleta (tomada del verde de marca de Afrodita) --- */
+    /* --- Paleta (tomada del verde de marca de Afro) --- */
     --paper:     #F3F1E8;   /* fondo principal, verde muy pálido/hueso */
     --ink:       #1A2620;   /* texto principal, verde muy oscuro casi negro */
     --ink-soft:  #556155;   /* texto secundario */
@@ -374,7 +374,8 @@
     .testi-grid{ grid-template-columns: 1fr; }
     .nav-cta{ display:none; }
     .burger{ display:flex; margin-right: 4px; }
-    .nav{ padding-right: 6px; }
+    .nav{ padding-right: 6px; padding-left: 6px; }
+    .logo{ margin-left: 4px; }
     .nav-links{
       display:none;
       position:absolute;
@@ -399,7 +400,6 @@
       text-align:center;
       gap: 10px;
     }
-    .cta-final{ padding: 44px 24px; }
   }
 
   @media (prefers-reduced-motion: reduce){
@@ -503,6 +503,9 @@
   /* ============================================================
      ¿QUÉ ESTÁS BUSCANDO?
      ============================================================ */
+  .buscando{
+    background: linear-gradient(180deg, var(--paper) 0%, #FFFFFF 100%);
+  }
   .buscando-grid{
     display:grid;
     grid-template-columns: 0.85fr 1.15fr;
@@ -560,12 +563,15 @@
     .hero-split{ min-height: auto; background: var(--paper); flex-direction: column; align-items: stretch; }
     .hero-split-photo{ position:relative; width:100%; height:320px; border-radius:0; order:-1; }
     .hero-split-text{ padding: 40px 0; max-width:none; }
+    .hero-split-text{ padding: 32px 0 24px; max-width:none; }
     .buscando-grid{ grid-template-columns: 1fr; }
     .buscando-cards{ grid-template-columns: 1fr 1fr 1fr; gap:10px; }
     .mini-card{ padding: 16px 10px; }
     .mini-card-photo{ width:48px; height:48px; margin-bottom:10px; }
     .mini-card h4{ font-size:14px; }
     .mini-card p{ display:none; }
+    .section{ padding: 52px 0; }
+    .cta-final{ padding: 36px 22px; }
   }
 
 </style>
@@ -582,7 +588,7 @@
     <nav class="nav-links">
       <a href="#inicio">Inicio</a>
       <a href="#servicios">Servicios</a>
-      <a href="#nosotros">Por qué elegirnos</a>
+      <a href="#nosotros">Quiénes somos</a>
       <a href="#contacto">Contacto</a>
     </nav>
     <div class="nav-cta">
@@ -611,7 +617,7 @@
   <div class="hero-split-photo">
     <img src="hero-foto.jpg" alt="Piel cuidada, tratamiento de estética facial en Afrodita">
     <div class="social-rail">
-      <a href="https://instagram.com/bellezaAfroditadita" target="_blank" aria-label="Instagram">
+      <a href="https://instagram.com/bellezaafrodita" target="_blank" aria-label="Instagram">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
       </a>
       <a href="https://wa.me/5493564690017" target="_blank" aria-label="WhatsApp">
@@ -746,7 +752,7 @@
     <div class="footer-grid">
       <div class="logo">Afrodita</div>
       <div class="footer-links">
-        <a href="https://instagram.com/bellezaAfroditadita" target="_blank">Instagram</a>
+        <a href="https://instagram.com/bellezaafrodita" target="_blank">Instagram</a>
         <a href="https://wa.me/5493564690017" target="_blank">WhatsApp</a>
       </div>
     </div>
